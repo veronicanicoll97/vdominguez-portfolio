@@ -29,6 +29,7 @@ jobs:
         with:
           branch: master
           folder: public
+          token: ${{ secrets.GITHUB_TOKEN }}
           clean: true
         # with:
           # path: . # The root location of your Astro project inside the repository. (optional)
