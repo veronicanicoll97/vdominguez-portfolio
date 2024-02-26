@@ -1,0 +1,150 @@
+---
+import TailwindIcon from "./icons/Tailwind.astro";
+import ReactIcon from "./icons/React.astro";
+import FirebaseIcon from "./icons/Firebase.astro";
+import NextjsIcon from "./icons/Nextjs.astro";
+import AstroIcon from "./icons/AstroIcon.astro";
+import AngularIcon from "./icons/Angular.astro";
+import CardPost from "./CardPost.astro";
+import SqlServerIcon from "./icons/SqlServer.astro";
+import PHPIcon from "./icons/Php.astro";
+import CIcon from "./icons/C.astro";
+import NodeIcon from "./icons/Node.astro";
+import Postgres from "./icons/Project.astro"
+import Mongo from "./icons/Mongo.astro";
+
+const TAGS = {
+  TAILWIND: {
+    name: "Tailwind",
+    class: "text-[#73bcf6] bg-[#003159]",
+    icon: TailwindIcon,
+  },
+  REACT: {
+    name: "React",
+    class: "text-white bg-[#0b57d0]",
+    icon: ReactIcon,
+  },
+  FIREBASE: {
+    name: "Firebase",
+    class: "text-white bg-[#1e88e5]",
+    icon: FirebaseIcon,
+  },
+  NEXTJS: {
+    name: "NextJS",
+    class: "text-white bg-blue-500",
+    icon: NextjsIcon,
+  },
+  ASTROJS: {
+    name: "Astro",
+    class: "bg-white text-black",
+    icon: AstroIcon,
+  },
+  ANGULARJS: {
+    name: "AngularJS",
+    class: "text-white bg-[#dd1b16] ",
+    icon: AngularIcon,
+  },
+  SQLSERVERICON: {
+    name: "SQLServer",
+    icon: SqlServerIcon,
+  },
+  PHPIcon: {
+    name: "PHP",
+    icon: PHPIcon,
+  },
+  CIcon: {
+    name: ".NET Framework",
+    icon: CIcon,
+  },
+  NodeIcon: {
+    name: "NodeJS",
+    icon: NodeIcon,
+  },
+  POSTGRESBD: {
+    name: "Postgres",
+    icon: Postgres
+  },
+  MONGODB: {
+    name: "MongoDB",
+    icon: Mongo
+  }
+};
+
+const PROJECTS = [
+  {
+    title: "English For You",
+    description:
+      "Sistema desarrollado para la academia de idiomas English For You de la ciudad de Caaguazú, Paraguay. El sistema cuenta con los módulos de registro de alumnos, control de asistencias, deudas del alumno y notificación de mensajes vía Whatsapp. Cuenta con un módulo para el contro del ingresos y egresos de la academia, un sistema de generación de facturas.",
+    image: "eng-for-you.jpg",
+    startDate: "set. 2023",
+    endDate: "mar. 2024",
+    tags: [TAGS.REACT, TAGS.POSTGRESBD, TAGS.MONGODB, TAGS.NodeIcon],
+  },
+  {
+    title: "Comedor Untels",
+    description:
+      "Aplicación web para el comedor de la Universidad Nacional Tecnológica de Lima Sur - Cuenta con un sistema de autenticación, un sistema de platillos y armado de menúes",
+    image: "eng-for-you.jpg",
+    // linkSite: "https://comedoruntels.vercel.app/",
+    // linkRepository: "https://github.com/JfloresXc/comedor-untels",
+    startDate: "abr. 2023",
+    endDate: "jul. 2022",
+    tags: [TAGS.ANGULARJS, TAGS.FIREBASE],
+  },
+  {
+    title: "Centro Idiomas",
+    description:
+      "Landing Page para un centro de idiomas, realizada de antemano por un diseño en Figma - Cuenta con un formulario de contacto y Lazy Loading para las imágenes - Basado en Design System",
+    image: "eng-for-you.jpg",
+    // linkSite: "https://centro-idiomas.vercel.app/",
+    // linkRepository: "https://github.com/JfloresXc/centro-idiomas",
+    startDate: "dic. 2021",
+    endDate: "jul. 2021",
+    tags: [TAGS.REACT],
+  },
+];
+---
+
+{
+  PROJECTS.map(
+    ({ startDate, endDate, title, description, tags, image }) => {
+      const vinetas = description.split(" - ");
+
+      return (
+        <CardPost fechaInicio={startDate} fechaFin={endDate}>
+          <div class="border-l-4 pl-3 pt-2">
+            <h4 class="text-xl font-semibold my-1 mb-3">{title}</h4>
+            <p class="">
+              {vinetas.map((descripcionItem) => {
+                return (
+                  <p class="border-gray-300 text-regular mb-2">
+                    ✅ {descripcionItem}.
+                  </p>
+                );
+              })}
+            </p>
+            <div class="flex flex-wrap gap-3 mt-5 ">
+              {tags.map((etiqueta) => {
+                return (
+                  <div
+                    class={`flex justify-center items-center gap-x-3
+                      rounded-xl px-2 py-1 bg-primary/20
+                      `}
+                  >
+                    <etiqueta.icon class="size-3.5 " />
+                    <span class="text-sm">{etiqueta.name}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <img
+            src={`proyectos/${image}`}
+            alt={title}
+            class="w-full h-60 object-cover rounded-xl mt-5"
+          />
+        </CardPost>
+      );
+    }
+  )
+}
