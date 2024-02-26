@@ -28,6 +28,8 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: master
+          folder: public
+          clean: true
         # with:
           # path: . # The root location of your Astro project inside the repository. (optional)
           # node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
