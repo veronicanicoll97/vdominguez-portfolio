@@ -7,5 +7,4 @@ import react from "@astrojs/react";
 export default defineConfig({
   integrations: [tailwind(), react()],
   site: "https://veronicanicoll97.github.io",
-  base: "https://github.com/veronicanicoll97/vdominguez-portfolio.git",
 });
